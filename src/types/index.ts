@@ -62,6 +62,8 @@ export interface DailySchedule {
   asrMethod: AsrMethod;
   generatedAt: string;
   times: Record<PrayerKey, PrayerTimeItem>;
+  sunrise?: string; // ISO 8601 string
+  sunset?: string;  // ISO 8601 string
 }
 
 export interface PrayerLog {

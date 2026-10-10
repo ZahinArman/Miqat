@@ -30,7 +30,8 @@ export async function getOrCalculateSchedule(
   if (
     existing &&
     existing.calculationMethod === settings.calculationMethod &&
-    existing.asrMethod === settings.asrMethod
+    existing.asrMethod === settings.asrMethod &&
+    existing.sunrise // ensure sunrise/sunset are present (added in a later version)
   ) {
     // Check if adjustments match
     let adjustmentsMatch = true;

@@ -161,4 +161,32 @@ describe('Prayer Calculator Service', () => {
     const nyDate = getLocalDateString(utcDate, 'America/New_York');
     expect(nyDate).toBe('2026-10-10');
   });
+
+  it('calculates sunrise and sunset times without mixing them into the five prayers', () => {
+    const localDate = '2026-10-11';
+    const schedule = calculateDailySchedule(
+      localDate,
+      dhakaLocation,
+      'Karachi',
+      'Hanafi',
+      zeroAdjustments
+    );
+
+    expect(schedule.sunrise).toBeDefined();
+    expect(schedule.sunset).toBeDefined();
+
+    const formattedSunrise = formatPrayerTime(schedule.sunrise!, 'Asia/Dhaka');
+    const formattedSunset = formatPrayerTime(schedule.sunset!, 'Asia/Dhaka');
+
+    expect(formattedSunrise).toMatch(/5:54 AM|5:55 AM/);
+    expect(formattedSunset).toMatch(/5:36 PM|5:37 PM/);
+
+    // Sunrise should occur after Fajr and before Dhuhr
+    const fajrMs = new Date(schedule.times.fajr.effectiveTime).getTime();
+    const sunriseMs = new Date(schedule.sunrise!).getTime();
+    const dhuhrMs = new Date(schedule.times.dhuhr.effectiveTime).getTime();
+
+    expect(sunriseMs).toBeGreaterThan(fajrMs);
+    expect(sunriseMs).toBeLessThan(dhuhrMs);
+  });
 });

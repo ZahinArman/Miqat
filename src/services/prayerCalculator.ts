@@ -181,7 +181,9 @@ export function calculateDailySchedule(
     calculationMethod,
     asrMethod,
     generatedAt: new Date().toISOString(),
-    times
+    times,
+    sunrise: pt.sunrise ? pt.sunrise.toISOString() : undefined,
+    sunset: pt.sunset ? pt.sunset.toISOString() : pt.maghrib ? pt.maghrib.toISOString() : undefined
   };
 }
 

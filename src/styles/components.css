@@ -56,6 +56,126 @@
   margin-bottom: var(--space-lg);
 }
 
+/* Location & Sun times bar */
+.location-sun-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+  margin-bottom: var(--space-lg);
+  gap: 12px;
+}
+
+.location-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  text-align: left;
+  transition: color var(--transition-fast);
+  padding: 4px 0;
+}
+
+.location-pill-btn:hover {
+  color: var(--color-text);
+}
+
+.location-arrow {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* Subtle Sun Times Trigger Button */
+.sun-times-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.sun-times-trigger:hover {
+  color: var(--color-text);
+  border-color: var(--color-sage-soft);
+  background-color: var(--color-surface-hover);
+}
+
+.sun-times-trigger.is-active {
+  color: var(--color-sage-soft);
+  border-color: var(--color-sage);
+  background-color: #242D25;
+}
+
+.sun-icon {
+  width: 13px;
+  height: 13px;
+  color: var(--color-sage-soft);
+}
+
+.sun-chevron {
+  font-size: 10px;
+  transition: transform var(--transition-fast);
+  opacity: 0.7;
+}
+
+.sun-chevron.open {
+  transform: rotate(180deg);
+}
+
+/* Expanded Sun Times Micro-Card */
+.sun-times-card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 12px 18px;
+  margin-top: -10px;
+  margin-bottom: var(--space-lg);
+  animation: fadeIn 180ms ease;
+}
+
+.sun-time-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.sun-time-icon-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.sun-time-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.sun-time-separator {
+  width: 1px;
+  height: 28px;
+  background-color: var(--color-border);
+}
+
 /* Next Prayer Card */
 .next-prayer-card {
   background-color: var(--color-surface);
