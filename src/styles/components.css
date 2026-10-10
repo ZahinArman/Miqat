@@ -1,0 +1,636 @@
+/* Top Header */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg);
+}
+
+.brand-wordmark {
+  font-size: 11px;
+  letter-spacing: 2.2px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.theme-toggle-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-sage-soft);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.theme-toggle-btn:active {
+  transform: scale(0.92);
+}
+
+/* Screen titles */
+.screen-date-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.screen-title {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: -0.3px;
+  line-height: 1.25;
+}
+
+.screen-subtitle {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+  margin-bottom: var(--space-lg);
+}
+
+/* Next Prayer Card */
+.next-prayer-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 22px 24px;
+  margin-bottom: var(--space-xl);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+.next-prayer-label {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.next-prayer-name {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.next-prayer-countdown {
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--color-sage-soft);
+  letter-spacing: 0.5px;
+  margin: 6px 0 2px 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.next-prayer-time-info {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin-bottom: 14px;
+}
+
+.progress-track {
+  width: 100%;
+  height: 4px;
+  background-color: #3A443A;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--color-sage);
+  border-radius: 2px;
+  transition: width 1s linear;
+}
+
+/* Today's Prayers Section */
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--space-sm);
+}
+
+.section-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.section-summary {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.prayers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Prayer Row */
+.prayer-row {
+  width: 100%;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  border: 1px solid transparent;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+  text-align: left;
+}
+
+.prayer-row:hover {
+  background-color: var(--color-surface-hover);
+}
+
+.prayer-row.is-next {
+  background-color: #29332A;
+  border-color: #53664E;
+}
+
+.prayer-row.is-completed {
+  opacity: 0.88;
+}
+
+.prayer-check-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 14px;
+  border-radius: var(--radius-full);
+}
+
+.check-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid #687168;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.check-circle.next-highlight {
+  border-color: var(--color-sage-soft);
+}
+
+.check-circle.completed {
+  background-color: var(--color-sage);
+  border-color: var(--color-sage);
+}
+
+.check-icon {
+  stroke: var(--color-bg);
+  stroke-width: 2.2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.prayer-name-container {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.prayer-row-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.prayer-arabic-subtle {
+  font-size: 13px;
+  color: var(--color-text-subtle);
+  font-family: var(--font-arabic);
+}
+
+.prayer-row-time {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+  margin-right: 12px;
+}
+
+.next-pill {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: var(--color-sage-soft);
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: rgba(181, 200, 168, 0.15);
+}
+
+/* Bottom Navigation */
+.bottom-nav-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+  z-index: 50;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.bottom-nav {
+  width: 100%;
+  max-width: var(--max-content-width);
+  height: 68px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 var(--space-md);
+}
+
+.nav-tab {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #89938A;
+  transition: color var(--transition-fast);
+}
+
+.nav-tab.active {
+  color: var(--color-sage-soft);
+}
+
+.nav-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.nav-label {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* History Calendar */
+.calendar-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  margin-bottom: var(--space-xl);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.calendar-month-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.calendar-nav-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.cal-nav-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+}
+
+.cal-nav-btn:hover {
+  color: var(--color-text);
+  border-color: var(--color-sage-soft);
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.calendar-day-cell {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--color-text);
+  background: none;
+  border: none;
+  transition: all var(--transition-fast);
+}
+
+.calendar-day-cell:hover:not(:disabled) {
+  background-color: var(--color-surface-hover);
+}
+
+.calendar-day-cell.is-selected {
+  background-color: var(--color-sage);
+  color: var(--color-bg);
+  font-weight: 600;
+}
+
+.calendar-day-cell.is-today:not(.is-selected) {
+  border: 1px solid var(--color-sage);
+}
+
+.day-completion-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--color-sage-soft);
+  position: absolute;
+  bottom: 5px;
+}
+
+.calendar-day-cell.is-selected .day-completion-dot {
+  background-color: var(--color-bg);
+}
+
+.history-details-card {
+  margin-top: var(--space-md);
+}
+
+/* Settings Groups */
+.settings-group-label {
+  font-size: 11px;
+  letter-spacing: 1.4px;
+  font-weight: 600;
+  color: var(--color-sage-soft);
+  text-transform: uppercase;
+  margin: var(--space-lg) 0 8px 4px;
+}
+
+.settings-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.settings-row {
+  width: 100%;
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color var(--transition-fast);
+}
+
+.settings-row:last-child {
+  border-bottom: none;
+}
+
+.settings-row.clickable:hover {
+  background-color: var(--color-surface-hover);
+}
+
+.settings-row-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.settings-row-value {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.settings-chevron {
+  font-size: 18px;
+  color: var(--color-text-muted);
+  margin-left: 12px;
+}
+
+/* Adjustments controls */
+.adjustment-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.adjustment-row:last-child {
+  border-bottom: none;
+}
+
+.adjust-stepper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.adjust-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-xs);
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.adjust-btn:active {
+  background-color: var(--color-surface-hover);
+}
+
+.adjust-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-sage-soft);
+  min-width: 52px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 100;
+  animation: modalFadeIn 160ms ease;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  width: 100%;
+  max-width: var(--max-content-width);
+  max-height: 85vh;
+  background-color: var(--color-surface);
+  border-top-left-radius: var(--radius-xl);
+  border-top-right-radius: var(--radius-xl);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 20px env(safe-area-inset-bottom);
+  overflow-y: auto;
+  animation: modalSlideUp 200ms ease;
+}
+
+@keyframes modalSlideUp {
+  from { transform: translateY(40px); }
+  to { transform: translateY(0); }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.modal-close-btn {
+  font-size: 20px;
+  color: var(--color-text-muted);
+  padding: 4px;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Action button */
+.btn-primary {
+  width: 100%;
+  min-height: 44px;
+  background-color: var(--color-sage);
+  color: var(--color-bg);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--transition-fast);
+}
+
+.btn-primary:active {
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  width: 100%;
+  min-height: 44px;
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast);
+}
+
+.btn-secondary:active {
+  background-color: var(--color-surface-hover);
+}
+
+.btn-danger {
+  width: 100%;
+  min-height: 44px;
+  background-color: rgba(199, 123, 114, 0.15);
+  border: 1px solid var(--color-danger);
+  color: var(--color-danger);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast);
+}
+
+.btn-danger:active {
+  background-color: rgba(199, 123, 114, 0.25);
+}
+
+/* Form input */
+.text-input {
+  width: 100%;
+  height: 44px;
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0 14px;
+  color: var(--color-text);
+  font-size: 14px;
+}
+
+.text-input:focus {
+  border-color: var(--color-sage-soft);
+}

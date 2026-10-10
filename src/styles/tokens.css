@@ -1,0 +1,85 @@
+:root {
+  /* Color Palette - Dark is default per brief */
+  --color-bg: #171A18;
+  --color-surface: #232924;
+  --color-surface-raised: #292F2A;
+  --color-surface-hover: #313832;
+  --color-text: #E9E5DA;
+  --color-text-muted: #A6B0A5;
+  --color-text-subtle: #7A8579;
+  --color-sage: #899C84;
+  --color-sage-soft: #B5C8A8;
+  --color-sage-dark: #202920;
+  --color-border: #343B35;
+  --color-border-subtle: #2A312B;
+  --color-warning: #C6A66B;
+  --color-danger: #C77B72;
+  --color-accent-ring: rgba(181, 200, 168, 0.4);
+
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-arabic: -apple-system, "Traditional Arabic", "Amiri", "Noto Naskh Arabic", serif;
+
+  /* Spacing */
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 20px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+
+  /* Border Radius */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 22px;
+  --radius-full: 9999px;
+
+  /* Touch & Interaction */
+  --min-touch-size: 44px;
+  --transition-fast: 150ms ease;
+  --transition-normal: 220ms ease;
+
+  /* Container width */
+  --max-content-width: 480px;
+}
+
+[data-theme="light"] {
+  --color-bg: #F4F2EC;
+  --color-surface: #E8E5DD;
+  --color-surface-raised: #DCD8CE;
+  --color-surface-hover: #D2CDC1;
+  --color-text: #191D1A;
+  --color-text-muted: #5E695D;
+  --color-text-subtle: #7E897D;
+  --color-sage: #5B7256;
+  --color-sage-soft: #4A6046;
+  --color-sage-dark: #E2ECE0;
+  --color-border: #D1CCC1;
+  --color-border-subtle: #DDD8CD;
+  --color-warning: #9C7423;
+  --color-danger: #A6473D;
+  --color-accent-ring: rgba(91, 114, 86, 0.35);
+}
+
+@media (prefers-color-scheme: light) {
+  [data-theme="system"] {
+    --color-bg: #F4F2EC;
+    --color-surface: #E8E5DD;
+    --color-surface-raised: #DCD8CE;
+    --color-surface-hover: #D2CDC1;
+    --color-text: #191D1A;
+    --color-text-muted: #5E695D;
+    --color-text-subtle: #7E897D;
+    --color-sage: #5B7256;
+    --color-sage-soft: #4A6046;
+    --color-sage-dark: #E2ECE0;
+    --color-border: #D1CCC1;
+    --color-border-subtle: #DDD8CD;
+    --color-warning: #9C7423;
+    --color-danger: #A6473D;
+    --color-accent-ring: rgba(91, 114, 86, 0.35);
+  }
+}

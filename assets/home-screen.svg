@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844" role="img" aria-label="Miqat home screen design reference">
+<rect width="390" height="844" rx="34" fill="#171A18"/>
+
+<text x="28" y="48" fill="#A6B0A5" font-family="Inter,Arial,sans-serif" font-size="11" letter-spacing="2.2">MIQAT</text>
+<circle cx="350" cy="39" r="17" fill="#293029"/><path d="M345 40a7 7 0 1 0 10-9 8 8 0 1 1-10 9" fill="#B5C8A8"/>
+<text x="28" y="86" fill="#A6B0A5" font-family="Inter,Arial,sans-serif" font-size="12">SATURDAY, OCTOBER 10</text>
+<text x="28" y="119" fill="#E9E5DA" font-family="Inter,Arial,sans-serif" font-size="25" font-weight="600">Assalamu alaikum</text>
+<text x="28" y="145" fill="#A6B0A5" font-family="Inter,Arial,sans-serif" font-size="13">Dhaka, Bangladesh</text>
+<rect x="20" y="169" width="350" height="205" rx="22" fill="#232924" stroke="#343B35"/>
+<text x="42" y="202" fill="#A6B0A5" font-family="Inter,Arial,sans-serif" font-size="11" letter-spacing="1.5">NEXT PRAYER</text>
+<text x="42" y="245" fill="#E9E5DA" font-family="Inter,Arial,sans-serif" font-size="31" font-weight="600">Asr</text>
+<text x="42" y="292" fill="#B5C8A8" font-family="Inter,Arial,sans-serif" font-size="35" font-weight="500">01:24:18</text>
+<text x="42" y="319" fill="#A6B0A5" font-family="Inter,Arial,sans-serif" font-size="14">Begins at 5:09 PM</text>
+<rect x="42" y="340" width="306" height="4" rx="2" fill="#3A443A"/><rect x="42" y="340" width="183" height="4" rx="2" fill="#899C84"/>
+<text x="22" y="415" fill="#E9E5DA" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="600">Today's prayers</text>
+<text x="368" y="415" fill="#A6B0A5" font-family="Inter,Arial,sans-serif" font-size="12" text-anchor="end">2 of 5 completed</text>
+<circle cx="44" cy="452" r="11" fill="#899C84"/><path d="M39 452 l4 4 l7 -8" stroke="#171A18" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="68" y="457" fill="#E9E5DA" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="500">Fajr</text><text x="267" y="457" fill="#A6B0A5" font-family="Inter,Arial,sans-serif" font-size="14" text-anchor="end">4:45 AM</text><circle cx="44" cy="511" r="11" fill="#899C84"/><path d="M39 511 l4 4 l7 -8" stroke="#171A18" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="68" y="516" fill="#E9E5DA" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="500">Dhuhr</text><text x="267" y="516" fill="#A6B0A5" font-family="Inter,Arial,sans-serif" font-size="14" text-anchor="end">12:02 PM</text><rect x="20" y="546" width="350" height="65" rx="13" fill="#29332A" stroke="#53664E"/><circle cx="44" cy="570" r="11" fill="none" stroke="#B5C8A8" stroke-width="1.5"/><text x="68" y="575" fill="#E9E5DA" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="500">Asr</text><text x="267" y="575" fill="#A6B0A5" font-family="Inter,Arial,sans-serif" font-size="14" text-anchor="end">5:09 PM</text><text x="348" y="575" fill="#B5C8A8" font-family="Inter,Arial,sans-serif" font-size="10" text-anchor="end">NEXT</text><circle cx="44" cy="629" r="11" fill="none" stroke="#687168" stroke-width="1.5"/><text x="68" y="634" fill="#E9E5DA" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="500">Maghrib</text><text x="267" y="634" fill="#A6B0A5" font-family="Inter,Arial,sans-serif" font-size="14" text-anchor="end">5:48 PM</text><circle cx="44" cy="688" r="11" fill="none" stroke="#687168" stroke-width="1.5"/><text x="68" y="693" fill="#E9E5DA" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="500">Isha</text><text x="267" y="693" fill="#A6B0A5" font-family="Inter,Arial,sans-serif" font-size="14" text-anchor="end">7:05 PM</text>
+<path d="M20 756 H370" stroke="#343B35"/>
+<g fill="#B5C8A8" font-family="Inter,Arial,sans-serif" font-size="11" text-anchor="middle">
+<text x="72" y="789">Home</text><text x="195" y="789" fill="#89938A">History</text><text x="318" y="789" fill="#89938A">Settings</text>
+</g>
+<g stroke="#B5C8A8" stroke-width="1.6" fill="none"><path d="M64 771 l8 -7 l8 7 v8 h-6 v-6 h-4 v6 h-6z"/><rect x="187" y="764" width="16" height="16" rx="2"/><path d="M191 760 v7 M199 760 v7 M187 770 h16"/><circle cx="318" cy="771" r="7"/><path d="M318 760 v3 M318 779 v3 M307 771 h3 M326 771 h3"/></g>
+
+</svg>

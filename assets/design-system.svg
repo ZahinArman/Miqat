@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-label="Miqat design system">
+<rect width="1200" height="620" rx="28" fill="#F1EFE8"/>
+<text x="64" y="78" fill="#171A18" font-family="Inter,Arial,sans-serif" font-size="18" letter-spacing="4">MIQAT / DESIGN SYSTEM</text>
+<text x="64" y="136" fill="#171A18" font-family="Inter,Arial,sans-serif" font-size="42" font-weight="600">Quiet Focus</text>
+<text x="64" y="174" fill="#656D64" font-family="Inter,Arial,sans-serif" font-size="18">A calm, prayer-first interface. No noise, no pressure.</text>
+<g font-family="Inter,Arial,sans-serif">
+<rect x="64" y="230" width="240" height="142" rx="18" fill="#171A18"/><text x="84" y="336" fill="#E9E5DA" font-size="18">Background</text><text x="84" y="356" fill="#A6B0A5" font-size="14">#171A18</text>
+<rect x="326" y="230" width="240" height="142" rx="18" fill="#232924"/><text x="346" y="336" fill="#E9E5DA" font-size="18">Surface</text><text x="346" y="356" fill="#A6B0A5" font-size="14">#232924</text>
+<rect x="588" y="230" width="240" height="142" rx="18" fill="#E9E5DA"/><text x="608" y="336" fill="#171A18" font-size="18">Warm ivory</text><text x="608" y="356" fill="#4F574F" font-size="14">#E9E5DA</text>
+<rect x="850" y="230" width="286" height="142" rx="18" fill="#899C84"/><text x="870" y="336" fill="#171A18" font-size="18">Muted sage</text><text x="870" y="356" fill="#202920" font-size="14">#899C84</text>
+<text x="64" y="438" fill="#171A18" font-size="19" font-weight="600">Type hierarchy</text>
+<text x="64" y="482" fill="#171A18" font-size="28" font-weight="600">Next prayer</text>
+<text x="64" y="517" fill="#171A18" font-size="19">Asr · 5:09 PM</text>
+<text x="64" y="550" fill="#656D64" font-size="15">Labels and helper text remain quiet and readable.</text>
+<rect x="800" y="426" width="336" height="72" rx="15" fill="#171A18"/><text x="824" y="455" fill="#A6B0A5" font-size="12" letter-spacing="1.4">TODAY'S PRAYERS</text><text x="824" y="480" fill="#E9E5DA" font-size="18">2 of 5 completed</text><circle cx="1092" cy="462" r="14" fill="#899C84"/><path d="M1085 462 l5 5 l9 -11" stroke="#171A18" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g></svg>

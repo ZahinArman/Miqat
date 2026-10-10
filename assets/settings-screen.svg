@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844" role="img" aria-label="Miqat settings screen design reference">
+<rect width="390" height="844" rx="34" fill="#171A18"/>
+
+<text x="28" y="48" fill="#A6B0A5" font-family="Inter,Arial,sans-serif" font-size="11" letter-spacing="2.2">MIQAT</text>
+<text x="28" y="98" fill="#E9E5DA" font-family="Inter,Arial,sans-serif" font-size="27" font-weight="600">Settings</text>
+<text x="28" y="124" fill="#A6B0A5" font-family="Inter,Arial,sans-serif" font-size="13">Make prayer times fit your trusted method.</text>
+<text x="24" y="171" fill="#B5C8A8" font-family="Inter,Arial,sans-serif" font-size="11" letter-spacing="1.4">LOCATION</text>
+<rect x="20" y="187" width="350" height="66" rx="13" fill="#232924" stroke="#343B35"/>
+<text x="38" y="214" fill="#E9E5DA" font-family="Inter,Arial,sans-serif" font-size="14">Selected location</text>
+<text x="38" y="235" fill="#A6B0A5" font-family="Inter,Arial,sans-serif" font-size="12">Dhaka, Bangladesh</text>
+<text x="348" y="226" fill="#A6B0A5" font-family="Inter,Arial,sans-serif" font-size="19" text-anchor="end">›</text>
+<text x="24" y="289" fill="#B5C8A8" font-family="Inter,Arial,sans-serif" font-size="11" letter-spacing="1.4">CALCULATION</text>
+<rect x="20" y="305" width="350" height="75" rx="13" fill="#232924" stroke="#343B35"/>
+<text x="38" y="332" fill="#E9E5DA" font-family="Inter,Arial,sans-serif" font-size="14">Calculation method</text>
+<text x="38" y="355" fill="#A6B0A5" font-family="Inter,Arial,sans-serif" font-size="12">Choose a supported method</text>
+<text x="348" y="346" fill="#A6B0A5" font-family="Inter,Arial,sans-serif" font-size="19" text-anchor="end">›</text>
+<rect x="20" y="389" width="350" height="66" rx="13" fill="#232924" stroke="#343B35"/>
+<text x="38" y="416" fill="#E9E5DA" font-family="Inter,Arial,sans-serif" font-size="14">Asr juristic method</text>
+<text x="38" y="438" fill="#A6B0A5" font-family="Inter,Arial,sans-serif" font-size="12">Hanafi or Standard, as supported</text>
+<text x="348" y="430" fill="#A6B0A5" font-family="Inter,Arial,sans-serif" font-size="19" text-anchor="end">›</text>
+<text x="24" y="491" fill="#B5C8A8" font-family="Inter,Arial,sans-serif" font-size="11" letter-spacing="1.4">MANUAL ADJUSTMENTS</text>
+<rect x="20" y="507" width="350" height="145" rx="13" fill="#232924" stroke="#343B35"/>
+<text x="38" y="532" fill="#E9E5DA" font-family="Inter,Arial,sans-serif" font-size="13">Fajr</text><text x="348" y="532" fill="#B5C8A8" font-family="Inter,Arial,sans-serif" font-size="13" text-anchor="end">+0 min</text><path d="M36 542 H354" stroke="#343B35"/><text x="38" y="557" fill="#E9E5DA" font-family="Inter,Arial,sans-serif" font-size="13">Dhuhr</text><text x="348" y="557" fill="#B5C8A8" font-family="Inter,Arial,sans-serif" font-size="13" text-anchor="end">+0 min</text><path d="M36 567 H354" stroke="#343B35"/><text x="38" y="582" fill="#E9E5DA" font-family="Inter,Arial,sans-serif" font-size="13">Asr</text><text x="348" y="582" fill="#B5C8A8" font-family="Inter,Arial,sans-serif" font-size="13" text-anchor="end">+0 min</text><path d="M36 592 H354" stroke="#343B35"/><text x="38" y="607" fill="#E9E5DA" font-family="Inter,Arial,sans-serif" font-size="13">Maghrib</text><text x="348" y="607" fill="#B5C8A8" font-family="Inter,Arial,sans-serif" font-size="13" text-anchor="end">+0 min</text><path d="M36 617 H354" stroke="#343B35"/><text x="38" y="632" fill="#E9E5DA" font-family="Inter,Arial,sans-serif" font-size="13">Isha</text><text x="348" y="632" fill="#B5C8A8" font-family="Inter,Arial,sans-serif" font-size="13" text-anchor="end">+0 min</text>
+<text x="24" y="687" fill="#B5C8A8" font-family="Inter,Arial,sans-serif" font-size="11" letter-spacing="1.4">APPEARANCE & PRIVACY</text>
+<rect x="20" y="703" width="350" height="42" rx="11" fill="#232924"/>
+<text x="38" y="729" fill="#E9E5DA" font-family="Inter,Arial,sans-serif" font-size="13">Theme: Dark</text>
+<path d="M20 756 H370" stroke="#343B35"/>
+<g fill="#89938A" font-family="Inter,Arial,sans-serif" font-size="11" text-anchor="middle"><text x="72" y="789">Home</text><text x="195" y="789">History</text><text x="318" y="789" fill="#B5C8A8">Settings</text></g>
+<g stroke="#89938A" stroke-width="1.6" fill="none"><path d="M64 771 l8 -7 l8 7 v8 h-6 v-6 h-4 v6 h-6z"/><rect x="187" y="764" width="16" height="16" rx="2"/><path d="M191 760 v7 M199 760 v7 M187 770 h16"/><circle cx="318" cy="771" r="7"/><path d="M318 760 v3 M318 779 v3 M307 771 h3 M326 771 h3"/></g>
+
+</svg>
