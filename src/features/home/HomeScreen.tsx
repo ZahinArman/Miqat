@@ -88,42 +88,47 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
         </button>
       </div>
 
-      {/* Expanded Sun Times Micro-Card */}
-      {showSunTimes && (
-        <div className="sun-times-card" role="region" aria-label="Sunrise and Sunset Times">
-          {/* Sunrise */}
-          <div className="sun-time-item">
-            <div className="sun-time-icon-label">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2v6" />
-                <path d="M4.93 10.93l1.41 1.41" />
-                <path d="M20 18H4" />
-                <path d="M20 14a8 8 0 0 0-16 0" />
-                <polyline points="8 6 12 2 16 6" />
-              </svg>
-              <span>Sunrise</span>
+      {/* Smoothly Expandable Sun Times Section */}
+      <div
+        className={`sun-times-collapsible ${showSunTimes ? 'is-expanded' : ''}`}
+        aria-hidden={!showSunTimes}
+      >
+        <div className="sun-times-overflow">
+          <div className="sun-times-card" role="region" aria-label="Sunrise and Sunset Times">
+            {/* Sunrise */}
+            <div className="sun-time-item">
+              <div className="sun-time-icon-label">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2v6" />
+                  <path d="M4.93 10.93l1.41 1.41" />
+                  <path d="M20 18H4" />
+                  <path d="M20 14a8 8 0 0 0-16 0" />
+                  <polyline points="8 6 12 2 16 6" />
+                </svg>
+                <span>Sunrise</span>
+              </div>
+              <span className="sun-time-value tabular-nums">{formattedSunrise}</span>
             </div>
-            <span className="sun-time-value tabular-nums">{formattedSunrise}</span>
-          </div>
 
-          <div className="sun-time-separator" aria-hidden="true" />
+            <div className="sun-time-separator" aria-hidden="true" />
 
-          {/* Sunset */}
-          <div className="sun-time-item">
-            <div className="sun-time-icon-label">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 10V2" />
-                <path d="M4.93 10.93l1.41 1.41" />
-                <path d="M20 18H4" />
-                <path d="M20 14a8 8 0 0 0-16 0" />
-                <polyline points="16 6 12 10 8 6" />
-              </svg>
-              <span>Sunset</span>
+            {/* Sunset */}
+            <div className="sun-time-item">
+              <div className="sun-time-icon-label">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 10V2" />
+                  <path d="M4.93 10.93l1.41 1.41" />
+                  <path d="M20 18H4" />
+                  <path d="M20 14a8 8 0 0 0-16 0" />
+                  <polyline points="16 6 12 10 8 6" />
+                </svg>
+                <span>Sunset</span>
+              </div>
+              <span className="sun-time-value tabular-nums">{formattedSunset}</span>
             </div>
-            <span className="sun-time-value tabular-nums">{formattedSunset}</span>
           </div>
         </div>
-      )}
+      </div>
 
       {/* Next Prayer Card */}
       {nextPrayer && <NextPrayerCard nextPrayer={nextPrayer} />}

@@ -1,4 +1,6 @@
 :root {
+  interpolate-size: allow-keywords;
+
   /* Color Palette - Dark is default per brief */
   --color-bg: #171A18;
   --color-surface: #232924;
