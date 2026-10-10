@@ -39,8 +39,15 @@ interface BeforeInstallPromptEvent extends Event {
   userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
 }
 
+const SCREEN_ORDER: Record<ActiveScreen, number> = {
+  home: 0,
+  history: 1,
+  settings: 2
+};
+
 export const App: React.FC = () => {
   const [activeScreen, setActiveScreen] = useState<ActiveScreen>('home');
+  const [transitionDirection, setTransitionDirection] = useState<'forward' | 'backward' | 'none'>('none');
   const [settings, setSettings] = useState<UserSettings | null>(null);
   const [location, setLocation] = useState<UserLocation | null>(null);
   const [allLocations, setAllLocations] = useState<UserLocation[]>([]);
@@ -54,6 +61,14 @@ export const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const deferredPromptRef = useRef<BeforeInstallPromptEvent | null>(null);
+
+  const handleSelectScreen = (target: ActiveScreen) => {
+    if (target === activeScreen) return;
+    const currentIdx = SCREEN_ORDER[activeScreen];
+    const targetIdx = SCREEN_ORDER[target];
+    setTransitionDirection(targetIdx > currentIdx ? 'forward' : 'backward');
+    setActiveScreen(target);
+  };
 
   // Apply theme to document
   useEffect(() => {
@@ -294,47 +309,52 @@ export const App: React.FC = () => {
           <Header theme={settings.theme} onCycleTheme={handleCycleTheme} />
         </div>
 
-        {/* Screen Routing */}
-        <main style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-          {activeScreen === 'home' && (
-            <HomeScreen
-              schedule={schedule}
-              nextPrayer={nextPrayer}
-              logs={logs}
-              location={location}
-              localDate={todayLocalDate}
-              onTogglePrayer={handleTogglePrayer}
-              onNavigateToSettings={() => setActiveScreen('settings')}
-            />
-          )}
+        {/* Screen Routing with Smooth Minimal Transitions */}
+        <main className="screen-viewport">
+          <div
+            key={activeScreen}
+            className={`screen-transition-panel direction-${transitionDirection}`}
+          >
+            {activeScreen === 'home' && (
+              <HomeScreen
+                schedule={schedule}
+                nextPrayer={nextPrayer}
+                logs={logs}
+                location={location}
+                localDate={todayLocalDate}
+                onTogglePrayer={handleTogglePrayer}
+                onNavigateToSettings={() => handleSelectScreen('settings')}
+              />
+            )}
 
-          {activeScreen === 'history' && (
-            <HistoryScreen
-              location={location}
-              settings={settings}
-              todayLocalDate={todayLocalDate}
-              onNavigateToHome={() => setActiveScreen('home')}
-            />
-          )}
+            {activeScreen === 'history' && (
+              <HistoryScreen
+                location={location}
+                settings={settings}
+                todayLocalDate={todayLocalDate}
+                onNavigateToHome={() => handleSelectScreen('home')}
+              />
+            )}
 
-          {activeScreen === 'settings' && (
-            <SettingsScreen
-              settings={settings}
-              location={location}
-              allLocations={allLocations}
-              onUpdateSettings={handleUpdateSettings}
-              onSelectLocation={handleSelectLocation}
-              onSaveCustomLocation={handleSaveCustomLocation}
-              onResetAllData={handleResetAllData}
-              onExportData={handleExportData}
-            />
-          )}
+            {activeScreen === 'settings' && (
+              <SettingsScreen
+                settings={settings}
+                location={location}
+                allLocations={allLocations}
+                onUpdateSettings={handleUpdateSettings}
+                onSelectLocation={handleSelectLocation}
+                onSaveCustomLocation={handleSaveCustomLocation}
+                onResetAllData={handleResetAllData}
+                onExportData={handleExportData}
+              />
+            )}
+          </div>
         </main>
 
         {/* Bottom Navigation */}
         <BottomNav
           activeScreen={activeScreen}
-          onSelectScreen={(scr) => setActiveScreen(scr)}
+          onSelectScreen={handleSelectScreen}
         />
       </div>
     </div>
