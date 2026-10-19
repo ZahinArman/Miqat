@@ -47,6 +47,7 @@ export const HistoryScreen: React.FC<HistoryScreenProps> = ({
   const [selectedSchedule, setSelectedSchedule] = useState<DailySchedule | null>(null);
   const [selectedLogs, setSelectedLogs] = useState<Record<PrayerKey, PrayerLog> | null>(null);
   const [monthData, setMonthData] = useState<Map<string, { completedCount: number; totalCount: number }>>(new Map());
+  const [showLegend, setShowLegend] = useState(false);
 
   // Month navigation across year boundaries
   const handlePrevMonth = () => {
@@ -226,20 +227,48 @@ export const HistoryScreen: React.FC<HistoryScreenProps> = ({
           })}
         </div>
 
-        {/* Completion Dot Legend */}
-        <div className="calendar-legend" aria-label="Prayer completion legend">
-          <span className="calendar-legend-label">Prayers:</span>
-          <div className="calendar-legend-items" role="list">
-            {[0, 1, 2, 3, 4, 5].map((count) => (
-              <div key={count} className="calendar-legend-item" role="listitem">
-                <span
-                  className="calendar-legend-dot"
-                  data-count={count}
-                  aria-hidden="true"
-                />
-                <span>{count}</span>
+        {/* Collapsible Color Guide (matching Sun Times interaction) */}
+        <div className="calendar-legend-section">
+          <button
+            type="button"
+            className={`calendar-legend-trigger ${showLegend ? 'is-active' : ''}`}
+            onClick={() => setShowLegend((prev) => !prev)}
+            aria-expanded={showLegend}
+            aria-controls="calendar-color-guide"
+            aria-label={showLegend ? 'Hide prayer color guide' : 'Show prayer color guide'}
+            title="Toggle prayer completion color guide"
+          >
+            <span className="calendar-legend-trigger-dots" aria-hidden="true">
+              <span className="mini-dot count-1" />
+              <span className="mini-dot count-3" />
+              <span className="mini-dot count-5" />
+            </span>
+            <span>Color guide</span>
+            <span className={`calendar-chevron ${showLegend ? 'open' : ''}`}>▾</span>
+          </button>
+
+          <div
+            id="calendar-color-guide"
+            className={`calendar-legend-collapsible ${showLegend ? 'is-expanded' : ''}`}
+            aria-hidden={!showLegend}
+          >
+            <div className="calendar-legend-overflow">
+              <div className="calendar-legend" role="region" aria-label="Prayer completion color guide">
+                <span className="calendar-legend-label">Prayers:</span>
+                <div className="calendar-legend-items" role="list">
+                  {[0, 1, 2, 3, 4, 5].map((count) => (
+                    <div key={count} className="calendar-legend-item" role="listitem">
+                      <span
+                        className="calendar-legend-dot"
+                        data-count={count}
+                        aria-hidden="true"
+                      />
+                      <span>{count}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
