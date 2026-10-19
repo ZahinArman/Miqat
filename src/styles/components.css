@@ -534,8 +534,9 @@
 }
 
 .calendar-day-cell.is-selected {
-  background-color: var(--color-sage);
-  color: var(--color-bg);
+  background-color: var(--color-surface-raised);
+  box-shadow: inset 0 0 0 1.5px var(--color-sage-soft);
+  color: var(--color-text);
   font-weight: 600;
 }
 
@@ -543,17 +544,111 @@
   border: 1px solid var(--color-sage);
 }
 
-.day-completion-dot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background-color: var(--color-sage-soft);
-  position: absolute;
-  bottom: 5px;
+.calendar-day-cell.is-today.is-selected {
+  box-shadow: inset 0 0 0 2px var(--color-sage-soft);
 }
 
-.calendar-day-cell.is-selected .day-completion-dot {
-  background-color: var(--color-bg);
+.day-completion-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 5px;
+  background-color: var(--color-dot-0);
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.day-completion-dot[data-count="0"] {
+  background-color: var(--color-dot-0);
+  opacity: 0.65;
+}
+
+.day-completion-dot[data-count="1"] {
+  background-color: var(--color-dot-1);
+}
+
+.day-completion-dot[data-count="2"] {
+  background-color: var(--color-dot-2);
+}
+
+.day-completion-dot[data-count="3"] {
+  background-color: var(--color-dot-3);
+}
+
+.day-completion-dot[data-count="4"] {
+  background-color: var(--color-dot-4);
+}
+
+.day-completion-dot[data-count="5"] {
+  background-color: var(--color-dot-5);
+  box-shadow: 0 0 5px var(--color-dot-5-glow);
+}
+
+/* History Calendar Legend */
+.calendar-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.calendar-legend-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-subtle);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.calendar-legend-items {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.calendar-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.calendar-legend-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.calendar-legend-dot[data-count="0"] {
+  background-color: var(--color-dot-0);
+  opacity: 0.65;
+}
+
+.calendar-legend-dot[data-count="1"] {
+  background-color: var(--color-dot-1);
+}
+
+.calendar-legend-dot[data-count="2"] {
+  background-color: var(--color-dot-2);
+}
+
+.calendar-legend-dot[data-count="3"] {
+  background-color: var(--color-dot-3);
+}
+
+.calendar-legend-dot[data-count="4"] {
+  background-color: var(--color-dot-4);
+}
+
+.calendar-legend-dot[data-count="5"] {
+  background-color: var(--color-dot-5);
+  box-shadow: 0 0 5px var(--color-dot-5-glow);
 }
 
 .history-details-card {

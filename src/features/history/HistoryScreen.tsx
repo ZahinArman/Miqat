@@ -198,7 +198,8 @@ export const HistoryScreen: React.FC<HistoryScreenProps> = ({
             const dateStr = `${currentYear}-${String(currentMonth).padStart(2, '0')}-${String(dayNum).padStart(2, '0')}`;
             const isSelected = dateStr === selectedDate;
             const isToday = dateStr === todayLocalDate;
-            const hasCompletions = (monthData.get(dateStr)?.completedCount ?? 0) > 0;
+            const isFuture = dateStr > todayLocalDate;
+            const completedCount = monthData.get(dateStr)?.completedCount ?? 0;
 
             return (
               <button
@@ -209,14 +210,37 @@ export const HistoryScreen: React.FC<HistoryScreenProps> = ({
                   // Tapping the same date toggles/unselects it back to monthly overview
                   setSelectedDate((prev) => (prev === dateStr ? null : dateStr));
                 }}
-                aria-label={`${monthName} ${dayNum}, ${currentYear}${isToday ? ', today' : ''}${hasCompletions ? ', prayers recorded' : ''}${isSelected ? ', selected' : ''}`}
+                aria-label={`${monthName} ${dayNum}, ${currentYear}${isToday ? ', today' : ''}${!isFuture ? `, ${completedCount} of 5 prayers completed` : ''}${isSelected ? ', selected' : ''}`}
                 aria-pressed={isSelected}
               >
                 <span>{dayNum}</span>
-                {hasCompletions && <span className="day-completion-dot" aria-hidden="true" />}
+                {!isFuture && (
+                  <span
+                    className="day-completion-dot"
+                    data-count={completedCount}
+                    aria-hidden="true"
+                  />
+                )}
               </button>
             );
           })}
+        </div>
+
+        {/* Completion Dot Legend */}
+        <div className="calendar-legend" aria-label="Prayer completion legend">
+          <span className="calendar-legend-label">Prayers:</span>
+          <div className="calendar-legend-items" role="list">
+            {[0, 1, 2, 3, 4, 5].map((count) => (
+              <div key={count} className="calendar-legend-item" role="listitem">
+                <span
+                  className="calendar-legend-dot"
+                  data-count={count}
+                  aria-hidden="true"
+                />
+                <span>{count}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

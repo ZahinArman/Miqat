@@ -18,6 +18,15 @@
   --color-danger: #C77B72;
   --color-accent-ring: rgba(181, 200, 168, 0.4);
 
+  /* History completion dot colors (0 to 5 prayers) - Option A: Earth-to-Sage */
+  --color-dot-0: #4A544C;
+  --color-dot-1: #9E7B66;
+  --color-dot-2: #C6A66B;
+  --color-dot-3: #7E9878;
+  --color-dot-4: #899C84;
+  --color-dot-5: #B5C8A8;
+  --color-dot-5-glow: rgba(181, 200, 168, 0.45);
+
   /* Typography */
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-arabic: -apple-system, "Traditional Arabic", "Amiri", "Noto Naskh Arabic", serif;
@@ -64,6 +73,15 @@
   --color-warning: #9C7423;
   --color-danger: #A6473D;
   --color-accent-ring: rgba(91, 114, 86, 0.35);
+
+  /* History completion dot colors - Light */
+  --color-dot-0: #C2BBB0;
+  --color-dot-1: #9B6B55;
+  --color-dot-2: #9C7423;
+  --color-dot-3: #5F7A59;
+  --color-dot-4: #5B7256;
+  --color-dot-5: #3F5E3A;
+  --color-dot-5-glow: rgba(63, 94, 58, 0.25);
 }
 
 @media (prefers-color-scheme: light) {
@@ -83,5 +101,14 @@
     --color-warning: #9C7423;
     --color-danger: #A6473D;
     --color-accent-ring: rgba(91, 114, 86, 0.35);
+
+    /* History completion dot colors - System Light */
+    --color-dot-0: #C2BBB0;
+    --color-dot-1: #9B6B55;
+    --color-dot-2: #9C7423;
+    --color-dot-3: #5F7A59;
+    --color-dot-4: #5B7256;
+    --color-dot-5: #3F5E3A;
+    --color-dot-5-glow: rgba(63, 94, 58, 0.25);
   }
 }
