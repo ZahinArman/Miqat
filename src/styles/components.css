@@ -204,7 +204,8 @@
   background-color: var(--color-border);
 }
 
-/* Next Prayer Card */
+/* Current Prayer Card & Next Prayer Card */
+.current-prayer-card,
 .next-prayer-card {
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -216,15 +217,71 @@
   flex-direction: column;
 }
 
+.current-prayer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.current-prayer-label,
 .next-prayer-label {
   font-size: 11px;
   letter-spacing: 1.5px;
   font-weight: 600;
   color: var(--color-text-muted);
   text-transform: uppercase;
-  margin-bottom: 6px;
 }
 
+.current-prayer-status-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.current-prayer-status-btn:hover {
+  color: var(--color-text);
+  border-color: var(--color-sage-soft);
+  background-color: var(--color-surface-hover);
+}
+
+.current-prayer-status-btn.is-completed {
+  background-color: rgba(181, 200, 168, 0.16);
+  border-color: var(--color-sage);
+  color: var(--color-sage-soft);
+}
+
+.status-check-icon {
+  stroke: currentColor;
+}
+
+.current-prayer-status-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-subtle);
+  background-color: var(--color-surface-raised);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.current-prayer-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.current-prayer-name,
 .next-prayer-name {
   font-size: 32px;
   font-weight: 600;
@@ -232,19 +289,53 @@
   line-height: 1.2;
 }
 
+.current-prayer-arabic {
+  font-family: var(--font-arabic);
+  font-size: 20px;
+  color: var(--color-text-subtle);
+  line-height: 1;
+}
+
+.current-prayer-countdown-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 6px 0 2px 0;
+}
+
+.countdown-prefix {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-subtle);
+}
+
+.current-prayer-countdown,
 .next-prayer-countdown {
-  font-size: 36px;
+  font-size: 34px;
   font-weight: 500;
   color: var(--color-sage-soft);
   letter-spacing: 0.5px;
-  margin: 6px 0 2px 0;
   font-variant-numeric: tabular-nums;
 }
 
+.current-prayer-time-info,
 .next-prayer-time-info {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--color-text-muted);
   margin-bottom: 14px;
+}
+
+.current-prayer-next-preview {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--color-text-subtle);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.current-prayer-next-preview strong {
+  color: var(--color-text-muted);
+  font-weight: 600;
 }
 
 .progress-track {
@@ -305,9 +396,21 @@
   background-color: var(--color-surface-hover);
 }
 
-.prayer-row.is-next {
+.prayer-row.is-current {
   background-color: #29332A;
-  border-color: #53664E;
+  border-color: var(--color-sage);
+  box-shadow: 0 0 0 1px rgba(137, 156, 132, 0.25);
+}
+
+[data-theme="light"] .prayer-row.is-current {
+  background-color: #E2ECE0;
+  border-color: var(--color-sage);
+  box-shadow: 0 0 0 1px rgba(91, 114, 86, 0.25);
+}
+
+.prayer-row.is-next:not(.is-current) {
+  background-color: var(--color-surface-raised);
+  border-color: var(--color-border);
 }
 
 .prayer-row.is-completed {
@@ -333,6 +436,11 @@
   align-items: center;
   justify-content: center;
   transition: all var(--transition-fast);
+}
+
+.check-circle.current-highlight {
+  border-color: var(--color-sage);
+  box-shadow: 0 0 0 2px rgba(181, 200, 168, 0.3);
 }
 
 .check-circle.next-highlight {
@@ -378,15 +486,33 @@
   margin-right: 12px;
 }
 
-.next-pill {
+.current-pill {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.8px;
   color: var(--color-sage-soft);
   text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background-color: rgba(181, 200, 168, 0.2);
+  border: 1px solid rgba(181, 200, 168, 0.35);
+}
+
+[data-theme="light"] .current-pill {
+  color: #3F5E3A;
+  background-color: rgba(91, 114, 86, 0.15);
+  border-color: rgba(91, 114, 86, 0.3);
+}
+
+.next-pill {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
   padding: 2px 6px;
   border-radius: 4px;
-  background-color: rgba(181, 200, 168, 0.15);
+  background-color: rgba(166, 176, 165, 0.12);
 }
 
 /* Bottom Navigation */

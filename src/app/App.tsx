@@ -7,6 +7,7 @@ import {
   PrayerLog,
   PrayerKey,
   NextPrayerInfo,
+  CurrentPrayerInfo,
   ThemeOption
 } from '../types';
 import {
@@ -24,7 +25,8 @@ import {
 } from '../services/scheduleService';
 import {
   getLocalDateString,
-  getNextPrayerInfo
+  getNextPrayerInfo,
+  getCurrentPrayerInfo
 } from '../services/prayerCalculator';
 import { Header } from '../components/Header';
 import { BottomNav } from '../components/BottomNav';
@@ -56,6 +58,7 @@ export const App: React.FC = () => {
   const [tomorrowSchedule, setTomorrowSchedule] = useState<DailySchedule | null>(null);
   const [logs, setLogs] = useState<Record<PrayerKey, PrayerLog>>({} as Record<PrayerKey, PrayerLog>);
   const [nextPrayer, setNextPrayer] = useState<NextPrayerInfo | null>(null);
+  const [currentPrayer, setCurrentPrayer] = useState<CurrentPrayerInfo | null>(null);
   const [isOffline, setIsOffline] = useState(!navigator.onLine);
   const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -120,6 +123,7 @@ export const App: React.FC = () => {
       setTomorrowSchedule(dayData.tomorrowSchedule);
       setLogs(dayData.logs);
       setNextPrayer(dayData.nextPrayer);
+      setCurrentPrayer(dayData.currentPrayer);
       setIsLoading(false);
     } catch (err) {
       console.error('Failed to load initial data:', err);
@@ -145,9 +149,11 @@ export const App: React.FC = () => {
         return;
       }
 
-      // Live tick next prayer
-      const updated = getNextPrayerInfo(schedule, tomorrowSchedule, now, location.timeZoneId);
-      setNextPrayer(updated);
+      // Live tick next & current prayer
+      const updatedNext = getNextPrayerInfo(schedule, tomorrowSchedule, now, location.timeZoneId);
+      const updatedCurrent = getCurrentPrayerInfo(schedule, tomorrowSchedule, now, location.timeZoneId);
+      setNextPrayer(updatedNext);
+      setCurrentPrayer(updatedCurrent);
     }, 1000);
 
     return () => clearInterval(timer);
@@ -174,6 +180,7 @@ export const App: React.FC = () => {
       setSchedule(dayData.schedule);
       setTomorrowSchedule(dayData.tomorrowSchedule);
       setNextPrayer(dayData.nextPrayer);
+      setCurrentPrayer(dayData.currentPrayer);
     }
   };
 
@@ -196,6 +203,7 @@ export const App: React.FC = () => {
     setTomorrowSchedule(dayData.tomorrowSchedule);
     setLogs(dayData.logs);
     setNextPrayer(dayData.nextPrayer);
+    setCurrentPrayer(dayData.currentPrayer);
   };
 
   // Save Custom Location
@@ -318,6 +326,7 @@ export const App: React.FC = () => {
             {activeScreen === 'home' && (
               <HomeScreen
                 schedule={schedule}
+                currentPrayer={currentPrayer}
                 nextPrayer={nextPrayer}
                 logs={logs}
                 location={location}

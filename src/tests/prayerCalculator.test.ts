@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import {
   calculateDailySchedule,
   getNextPrayerInfo,
+  getCurrentPrayerInfo,
   formatCountdown,
   formatPrayerTime,
   getLocalDateString
@@ -188,5 +189,49 @@ describe('Prayer Calculator Service', () => {
 
     expect(sunriseMs).toBeGreaterThan(fajrMs);
     expect(sunriseMs).toBeLessThan(dhuhrMs);
+  });
+
+  it('determines current prayer correctly for Dhuhr, Fajr, Duha, and Isha', () => {
+    const today = '2026-10-10';
+    const schedule = calculateDailySchedule(today, dhakaLocation, 'Karachi', 'Hanafi', zeroAdjustments);
+    const tomorrowSchedule = calculateDailySchedule('2026-10-11', dhakaLocation, 'Karachi', 'Hanafi', zeroAdjustments);
+
+    // 1. Dhuhr window: 2:00 PM local Dhaka (08:00 UTC)
+    const dhuhrTime = new Date('2026-10-10T08:00:00.000Z');
+    const dhuhrInfo = getCurrentPrayerInfo(schedule, tomorrowSchedule, dhuhrTime, 'Asia/Dhaka');
+    expect(dhuhrInfo.key).toBe('dhuhr');
+    expect(dhuhrInfo.name).toBe('Dhuhr');
+    expect(dhuhrInfo.isNonPrayerInterval).toBe(false);
+    expect(dhuhrInfo.nextPrayerName).toBe('Asr');
+    expect(dhuhrInfo.diffMs).toBeGreaterThan(0);
+
+    // 2. Fajr window: 5:00 AM local Dhaka (Oct 9 23:00 UTC)
+    const fajrTime = new Date('2026-10-09T23:00:00.000Z');
+    const fajrInfo = getCurrentPrayerInfo(schedule, tomorrowSchedule, fajrTime, 'Asia/Dhaka');
+    expect(fajrInfo.key).toBe('fajr');
+    expect(fajrInfo.name).toBe('Fajr');
+    expect(fajrInfo.isNonPrayerInterval).toBe(false);
+    expect(fajrInfo.nextPrayerName).toBe('Sunrise');
+
+    // 3. Morning Gap / Duha: 8:00 AM local Dhaka (02:00 UTC)
+    const duhaTime = new Date('2026-10-10T02:00:00.000Z');
+    const duhaInfo = getCurrentPrayerInfo(schedule, tomorrowSchedule, duhaTime, 'Asia/Dhaka');
+    expect(duhaInfo.key).toBe('sunrise');
+    expect(duhaInfo.isNonPrayerInterval).toBe(true);
+    expect(duhaInfo.nextPrayerName).toBe('Dhuhr');
+
+    // 4. Isha night window: 10:00 PM local Dhaka (16:00 UTC)
+    const ishaTime = new Date('2026-10-10T16:00:00.000Z');
+    const ishaInfo = getCurrentPrayerInfo(schedule, tomorrowSchedule, ishaTime, 'Asia/Dhaka');
+    expect(ishaInfo.key).toBe('isha');
+    expect(ishaInfo.name).toBe('Isha');
+    expect(ishaInfo.nextPrayerName).toBe('Fajr');
+    expect(ishaInfo.diffMs).toBeGreaterThan(0);
+
+    // 5. Pre-Fajr midnight window: 2:00 AM local Dhaka (Oct 9 20:00 UTC)
+    const preFajrTime = new Date('2026-10-09T20:00:00.000Z');
+    const preFajrInfo = getCurrentPrayerInfo(schedule, tomorrowSchedule, preFajrTime, 'Asia/Dhaka');
+    expect(preFajrInfo.key).toBe('isha');
+    expect(preFajrInfo.nextPrayerName).toBe('Fajr');
   });
 });

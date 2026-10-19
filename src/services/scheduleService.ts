@@ -4,11 +4,13 @@ import {
   DailySchedule,
   PrayerLog,
   PrayerKey,
-  NextPrayerInfo
+  NextPrayerInfo,
+  CurrentPrayerInfo
 } from '../types';
 import {
   calculateDailySchedule,
   getNextPrayerInfo,
+  getCurrentPrayerInfo,
   getTomorrowLocalDateString
 } from './prayerCalculator';
 import {
@@ -68,6 +70,7 @@ export async function loadDayData(
   tomorrowSchedule: DailySchedule;
   logs: Record<PrayerKey, PrayerLog>;
   nextPrayer: NextPrayerInfo;
+  currentPrayer: CurrentPrayerInfo;
 }> {
   const tomorrowLocalDate = getTomorrowLocalDateString(new Date(), location.timeZoneId);
 
@@ -77,13 +80,16 @@ export async function loadDayData(
     getPrayerLogsForDate(localDate)
   ]);
 
-  const nextPrayer = getNextPrayerInfo(schedule, tomorrowSchedule, new Date(), location.timeZoneId);
+  const now = new Date();
+  const nextPrayer = getNextPrayerInfo(schedule, tomorrowSchedule, now, location.timeZoneId);
+  const currentPrayer = getCurrentPrayerInfo(schedule, tomorrowSchedule, now, location.timeZoneId);
 
   return {
     schedule,
     tomorrowSchedule,
     logs,
-    nextPrayer
+    nextPrayer,
+    currentPrayer
   };
 }
 

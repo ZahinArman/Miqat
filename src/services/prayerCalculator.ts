@@ -13,7 +13,8 @@ import {
   PrayerTimeItem,
   ManualAdjustments,
   AsrMethod,
-  NextPrayerInfo
+  NextPrayerInfo,
+  CurrentPrayerInfo
 } from '../types';
 
 export interface MethodInfo {
@@ -301,6 +302,156 @@ export function getNextPrayerInfo(
     progressPercent,
     isNextDay: true
   };
+}
+
+/**
+ * Determines the current active prayer window, countdown until window ends, and progress.
+ */
+export function getCurrentPrayerInfo(
+  currentSchedule: DailySchedule,
+  tomorrowSchedule: DailySchedule,
+  now: Date,
+  timeZoneId?: string
+): CurrentPrayerInfo {
+  const nowMs = now.getTime();
+
+  const fajrMs = new Date(currentSchedule.times.fajr.effectiveTime).getTime();
+  const sunriseMs = currentSchedule.sunrise
+    ? new Date(currentSchedule.sunrise).getTime()
+    : fajrMs + 80 * 60 * 1000;
+  const dhuhrMs = new Date(currentSchedule.times.dhuhr.effectiveTime).getTime();
+  const asrMs = new Date(currentSchedule.times.asr.effectiveTime).getTime();
+  const maghribMs = new Date(currentSchedule.times.maghrib.effectiveTime).getTime();
+  const ishaMs = new Date(currentSchedule.times.isha.effectiveTime).getTime();
+  const tomorrowFajrMs = new Date(tomorrowSchedule.times.fajr.effectiveTime).getTime();
+
+  const buildInfo = (
+    key: PrayerKey | 'sunrise',
+    name: string,
+    arabicName: string,
+    startMs: number,
+    endMs: number,
+    nextName: string,
+    nextTimeIso: string,
+    isNonPrayerInterval = false
+  ): CurrentPrayerInfo => {
+    const diffMs = Math.max(0, endMs - nowMs);
+    const totalSeconds = Math.floor(diffMs / 1000);
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    const totalWindowMs = Math.max(1, endMs - startMs);
+    const elapsedMs = Math.max(0, nowMs - startMs);
+    const progressPercent = Math.min(100, Math.max(0, (elapsedMs / totalWindowMs) * 100));
+
+    return {
+      key,
+      name,
+      arabicName,
+      timeString: formatPrayerTime(new Date(startMs).toISOString(), timeZoneId),
+      endTimeString: formatPrayerTime(new Date(endMs).toISOString(), timeZoneId),
+      diffMs,
+      hours,
+      minutes,
+      seconds,
+      progressPercent,
+      isNonPrayerInterval,
+      nextPrayerName: nextName,
+      nextPrayerTime: formatPrayerTime(nextTimeIso, timeZoneId)
+    };
+  };
+
+  // 1. Before Fajr today (00:00 to Fajr): Isha window continuing from yesterday
+  if (nowMs < fajrMs) {
+    const approxYesterdayIshaMs = ishaMs - 24 * 3600 * 1000;
+    return buildInfo(
+      'isha',
+      'Isha',
+      'العشاء',
+      approxYesterdayIshaMs,
+      fajrMs,
+      'Fajr',
+      currentSchedule.times.fajr.effectiveTime
+    );
+  }
+
+  // 2. Fajr window (Fajr to Sunrise)
+  if (nowMs >= fajrMs && nowMs < sunriseMs) {
+    return buildInfo(
+      'fajr',
+      'Fajr',
+      'الفجر',
+      fajrMs,
+      sunriseMs,
+      'Sunrise',
+      currentSchedule.sunrise ?? currentSchedule.times.dhuhr.effectiveTime
+    );
+  }
+
+  // 3. Sunrise to Dhuhr (Morning gap / Duha)
+  if (nowMs >= sunriseMs && nowMs < dhuhrMs) {
+    return buildInfo(
+      'sunrise',
+      'Duha',
+      'الضحى',
+      sunriseMs,
+      dhuhrMs,
+      'Dhuhr',
+      currentSchedule.times.dhuhr.effectiveTime,
+      true
+    );
+  }
+
+  // 4. Dhuhr window (Dhuhr to Asr)
+  if (nowMs >= dhuhrMs && nowMs < asrMs) {
+    return buildInfo(
+      'dhuhr',
+      'Dhuhr',
+      'الظهر',
+      dhuhrMs,
+      asrMs,
+      'Asr',
+      currentSchedule.times.asr.effectiveTime
+    );
+  }
+
+  // 5. Asr window (Asr to Maghrib)
+  if (nowMs >= asrMs && nowMs < maghribMs) {
+    return buildInfo(
+      'asr',
+      'Asr',
+      'العصر',
+      asrMs,
+      maghribMs,
+      'Maghrib',
+      currentSchedule.times.maghrib.effectiveTime
+    );
+  }
+
+  // 6. Maghrib window (Maghrib to Isha)
+  if (nowMs >= maghribMs && nowMs < ishaMs) {
+    return buildInfo(
+      'maghrib',
+      'Maghrib',
+      'المغرب',
+      maghribMs,
+      ishaMs,
+      'Isha',
+      currentSchedule.times.isha.effectiveTime
+    );
+  }
+
+  // 7. Isha window (Isha to tomorrow Fajr)
+  return buildInfo(
+    'isha',
+    'Isha',
+    'العشاء',
+    ishaMs,
+    tomorrowFajrMs,
+    'Fajr',
+    tomorrowSchedule.times.fajr.effectiveTime
+  );
 }
 
 /**

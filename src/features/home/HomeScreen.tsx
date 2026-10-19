@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 import {
   DailySchedule,
   NextPrayerInfo,
+  CurrentPrayerInfo,
   PrayerLog,
   PrayerKey,
   UserLocation,
   PRAYER_DEFINITIONS
 } from '../../types';
-import { NextPrayerCard } from '../../components/NextPrayerCard';
+import { CurrentPrayerCard } from '../../components/CurrentPrayerCard';
 import { PrayerRow } from '../../components/PrayerRow';
 import { formatHeaderDate, formatPrayerTime } from '../../services/prayerCalculator';
 
 interface HomeScreenProps {
   schedule: DailySchedule | null;
-  nextPrayer: NextPrayerInfo | null;
+  currentPrayer: CurrentPrayerInfo | null;
+  nextPrayer?: NextPrayerInfo | null;
   logs: Record<PrayerKey, PrayerLog>;
   location: UserLocation;
   localDate: string;
@@ -23,6 +25,7 @@ interface HomeScreenProps {
 
 export const HomeScreen: React.FC<HomeScreenProps> = ({
   schedule,
+  currentPrayer,
   nextPrayer,
   logs,
   location,
@@ -130,8 +133,22 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
         </div>
       </div>
 
-      {/* Next Prayer Card */}
-      {nextPrayer && <NextPrayerCard nextPrayer={nextPrayer} />}
+      {/* Current Prayer Hero Card */}
+      {currentPrayer && (
+        <CurrentPrayerCard
+          currentPrayer={currentPrayer}
+          isCompleted={
+            currentPrayer.key !== 'sunrise'
+              ? (logs[currentPrayer.key]?.completed ?? false)
+              : false
+          }
+          onToggleComplete={
+            currentPrayer.key !== 'sunrise'
+              ? () => onTogglePrayer(currentPrayer.key as PrayerKey)
+              : undefined
+          }
+        />
+      )}
 
       {/* Today's Prayers Section */}
       <section aria-labelledby="today-prayers-heading">
@@ -147,6 +164,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
               ? formatPrayerTime(timeItem.effectiveTime, location.timeZoneId)
               : '--:--';
             const isCompleted = logs[pDef.key]?.completed ?? false;
+            const isCurrent = currentPrayer?.key === pDef.key;
             const isNext = nextPrayer?.key === pDef.key && !nextPrayer.isNextDay;
 
             return (
@@ -157,6 +175,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                 arabicName={pDef.arabicName}
                 timeString={timeString}
                 completed={isCompleted}
+                isCurrent={isCurrent}
                 isNext={isNext}
                 onToggle={() => onTogglePrayer(pDef.key)}
               />

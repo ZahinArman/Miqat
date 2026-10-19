@@ -87,4 +87,20 @@ export interface NextPrayerInfo {
   isNextDay?: boolean;
 }
 
+export interface CurrentPrayerInfo {
+  key: PrayerKey | 'sunrise';
+  name: string;
+  arabicName: string;
+  timeString: string;
+  endTimeString: string;
+  diffMs: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  progressPercent: number;
+  isNonPrayerInterval?: boolean;
+  nextPrayerName: string;
+  nextPrayerTime: string;
+}
+
 export type ActiveScreen = 'home' | 'history' | 'settings';
